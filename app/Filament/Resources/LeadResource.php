@@ -23,6 +23,8 @@ class LeadResource extends Resource
     protected static ?string $modelLabel = 'Lead';
     protected static ?int $navigationSort = 1;
 
+    protected static ?string $navigationGroup = 'CRM';
+
     public static function form(Form|Forms\Form $form): Forms\Form
     {
         return $form->schema([

@@ -22,6 +22,9 @@ class AppointmentResource extends Resource
     protected static ?string $pluralLabel = 'Agendamentos';
     protected static ?string $modelLabel = 'Agendamento';
 
+    protected static ?string $navigationGroup = 'Agendamentos';
+
+
     public static function form(Form|Forms\Form $form): Forms\Form
     {
         return $form->schema([

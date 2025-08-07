@@ -43,10 +43,10 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function user()
-    {
-        return $this->belongsTo(User::class);
+    public function enrolledCourses() {
+        return $this->belongsToMany(Course::class, 'enrollments');
     }
+
 
     public function availabilities()
     {

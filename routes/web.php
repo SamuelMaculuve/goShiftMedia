@@ -1,22 +1,19 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
+use App\Http\Controllers\CourseController;
+use App\Http\Controllers\BookingController;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
 
-Route::get('/agendar/{username}', [App\Http\Controllers\BookingController::class, 'form']);
-Route::post('/agendar/{username}', [App\Http\Controllers\BookingController::class, 'submit']);
+Route::get('/agendar/{username}', [BookingController::class, 'form']);
+Route::post('/agendar/{username}', [BookingController::class, 'submit']);
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/cursos', [CourseController::class, 'index']);
+    Route::get('/cursos/{course}', [CourseController::class, 'show']);
+    Route::post('/cursos/{course}/inscrever', [CourseController::class, 'enroll']);
+});
